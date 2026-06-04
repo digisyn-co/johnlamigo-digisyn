@@ -17,12 +17,19 @@ jobs:
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
-          ssh-keyscan -p 22 digisyn.co >> ~/.ssh/known_hosts 2>/dev/null
+          ssh-keyscan -H digisyn.co >> ~/.ssh/known_hosts
+
+      - name: Add public key to cPanel via API
+        run: |
+          PUBLIC_KEY=$(ssh-keygen -y -f ~/.ssh/id_ed25519)
+          curl -s -k "https://digisyn.co:2083/execute/SSH/import_authorized_key" \
+            -u "digisync:${{ secrets.CPANEL_PASSWORD }}" \
+            -d "key=$PUBLIC_KEY&name=github-actions-auto"
 
       - name: Deploy via rsync over SSH
         run: |
           rsync -avz --delete \
-            -e "ssh -i ~/.ssh/id_ed25519 -p 22 -o StrictHostKeyChecking=no" \
+            -e "ssh -i ~/.ssh/id_ed25519 -p 22 -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null" \
             --exclude='.git' \
             --exclude='.github' \
             ./ digisync@digisyn.co:~/johnlamigo.digisyn.co/
