@@ -19,7 +19,5 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           server-dir: /public_html/johnlamigo.digisyn.cv/
-          protocol: ftps
+          protocol: ftp
           port: 21
-          dangerous-clean-slate: false
-          passive: true
