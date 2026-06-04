@@ -25,4 +25,4 @@ jobs:
             -e "ssh -i ~/.ssh/id_ed25519 -p 22 -o StrictHostKeyChecking=no" \
             --exclude='.git' \
             --exclude='.github' \
-            ./ digisync@digisyn.co:~/public_html/johnlamigo.digisyn.cv/
+            ./ digisync@digisyn.co:~/johnlamigo.digisyn.co/
