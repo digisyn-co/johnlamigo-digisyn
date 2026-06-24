@@ -1,4 +1,4 @@
-name: Deploy to cPanel via SSH
+name: Deploy to cPanel
 
 on:
   push:
@@ -9,16 +9,6 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Deploy via rsync over SSH
-        uses: burnett01/rsync-deployments@7.0.1
-        with:
-          switches: -avzr --delete --exclude='.git' --exclude='.github'
-          path: ./
-          remote_path: ~/johnlamigo.digisyn.co/
-          remote_host: digisyn.co
-          remote_port: 22
-          remote_user: digisync
-          remote_key: ${{ secrets.SSH_PRIVATE_KEY }}
+      - name: Deploy via webhook
+        run: |
+          curl -s -k "https://johnlamigo.digisyn.co/deploy.php?secret=johnlamigo2026"
