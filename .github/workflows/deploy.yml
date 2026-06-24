@@ -9,21 +9,15 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Pull latest via cPanel API
-        run: |
-          curl -s -k -X POST \
-            "https://digisyn.co:2083/execute/VersionControl/retrieve" \
-            -u "${{ secrets.CPANEL_USERNAME }}:${{ secrets.CPANEL_PASSWORD }}" \
-            -d "repository_root=/home/digisync/johnlamigo-site"
-          sleep 5
-
-          curl -s -k -X POST \
-            "https://digisyn.co:2083/execute/VersionControlDeployment/create" \
-            -u "${{ secrets.CPANEL_USERNAME }}:${{ secrets.CPANEL_PASSWORD }}" \
-            -d "repository_root=/home/digisync/johnlamigo-site"
-          sleep 5
-
-          curl -s -k --max-time 30 \
-            "https://johnlamigo.digisyn.co/deploy.php?secret=johnlamigo2026" || true
-
-          echo "Deploy triggered successfully"
+      - name: Deploy via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: digisyn.co
+          username: digisync
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          port: 7331
+          script: |
+            cd /home/digisync/johnlamigo-site
+            git fetch origin --prune
+            git reset --hard origin/main
+            git clean -fd
