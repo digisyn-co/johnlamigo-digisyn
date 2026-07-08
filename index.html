@@ -1,396 +1,488 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="dark" lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>John Lamigo — Wordpress Engineer &amp; Digital Strategist</title>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>John Lamigo | Wordpress Engineer &amp; Digital Strategist</title>
 <meta name="description" content="Freelance WordPress engineer with 7+ years of experience. Founder of DigiSyn. Expert in WordPress, GoHighLevel, funnels, and digital strategy.">
 <link rel="canonical" href="https://johnlamigo.digisyn.co/">
-<link rel="stylesheet" href="style.css?v=2">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Person","name":"John Michael Lamigo","jobTitle":"Wordpress Engineer","url":"https://johnlamigo.digisyn.co","email":"johnmichaellamigo@gmail.com"}
 </script>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=JetBrains+Mono:wght@100..900&family=Playfair+Display:wght@100..900&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+tailwind.config = {
+  darkMode: "class",
+  theme: {
+    extend: {
+      colors: {
+        "primary": "#c9c6c5",
+        "outline-variant": "#444748",
+        "obsidian": "#050505",
+        "on-secondary-container": "#b4b5b5",
+        "tertiary-fixed": "#b0f0d6",
+        "ink": "#0F0F0F",
+        "tertiary": "#95d3ba",
+        "emerald-deep": "#064E3B",
+        "slate": "#1A1A1A",
+        "on-tertiary-container": "#46836d",
+        "surface-dim": "#131313",
+        "on-secondary-fixed-variant": "#454747",
+        "background": "#131313",
+        "on-background": "#e5e2e1",
+        "surface": "#131313",
+        "on-surface": "#e5e2e1",
+        "outline": "#8e9192",
+        "secondary": "#c6c6c7"
+      },
+      borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+      spacing: {
+        "void-sm": "4rem",
+        "margin-page": "clamp(2rem, 8vw, 12rem)",
+        "void-lg": "16rem",
+        "section-gap": "10rem",
+        "gutter-grid": "2rem"
+      },
+      fontFamily: {
+        "body-md": ["Inter"], "body-lg": ["Inter"], "code-sm": ["JetBrains Mono"],
+        "headline-xl-mobile": ["Playfair Display"], "headline-lg": ["Playfair Display"],
+        "headline-xl": ["Playfair Display"], "label-caps": ["JetBrains Mono"]
+      },
+      fontSize: {
+        "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+        "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+        "code-sm": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+        "headline-xl-mobile": ["40px", {"lineHeight": "1.2", "fontWeight": "700"}],
+        "headline-lg": ["48px", {"lineHeight": "1.2", "fontWeight": "600"}],
+        "headline-xl": ["72px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+        "label-caps": ["12px", {"lineHeight": "1.0", "letterSpacing": "0.1em", "fontWeight": "500"}]
+      },
+      keyframes: {
+        fadeInUp: { "0%": { opacity: 0, transform: "translateY(1rem)" }, "100%": { opacity: 1, transform: "translateY(0)" } }
+      },
+      animation: { fadeInUp: "fadeInUp 1s ease forwards" }
+    }
+  }
+};
+</script>
+<style>
+  body{ background-color:#050505; color:#e5e2e1; scroll-behavior:smooth; }
+  .chamfer-border{ position:relative; }
+  .chamfer-border::before{
+    content:""; position:absolute; inset:0;
+    border-top:1px solid rgba(255,255,255,0.1); border-left:1px solid rgba(255,255,255,0.1);
+    pointer-events:none; transition:opacity .5s ease;
+  }
+  .bento-card:hover::before{ border-color:rgba(6,78,59,0.4); }
+  .custom-cursor{
+    width:20px; height:20px; border:1px solid rgba(255,255,255,.5); border-radius:50%;
+    position:fixed; pointer-events:none; z-index:9999;
+    transition:transform .1s ease-out, width .3s ease, height .3s ease;
+    mix-blend-mode:difference;
+  }
+  .text-outline{ -webkit-text-stroke:1px rgba(255,255,255,0.2); color:transparent; }
+  .rolex-hover{ transition:transform .8s cubic-bezier(.22,1,.36,1), background-color .8s ease; }
+  .rolex-hover:hover{ transform:translateY(-8px); }
+  section{ opacity:0; transition:opacity 1s ease; }
+  section.opacity-100{ opacity:1; }
+  .g-bento-1{background:linear-gradient(135deg,#0a5c44,#04140d)}
+  .g-bento-2{background:linear-gradient(135deg,#0d3b2e,#050505)}
+  .g-bento-4{background:linear-gradient(135deg,#122a22,#050505)}
+  .g-work{background:linear-gradient(135deg,#14432f,#0a1a14)}
+</style>
 </head>
-<body>
+<body class="font-body-md overflow-x-hidden">
+<div class="custom-cursor hidden md:block" id="cursor"></div>
 
-<div class="sidebar-overlay" id="sidebarOverlay"></div>
-<button class="sidebar-toggle" id="sidebarToggle" aria-label="Open menu">
-  <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-</button>
-
-<!-- ══════════════ SIDEBAR ══════════════ -->
-<aside class="sidebar" id="sidebar">
-  <div class="sidebar-profile">
-    <div class="profile-photo-wrap">
-      <img src="john.jpg" alt="John Michael Lamigo" class="profile-photo">
-      <div class="profile-photo-ring"></div>
-    </div>
-    <div class="sidebar-name">JOHN LAMIGO</div>
-    <div class="sidebar-title">Wordpress Engineer</div>
-    <div class="sidebar-availability">
-      <span class="avail-dot"></span>
-      Available for projects
-    </div>
-  </div>
-
-  <nav class="sidebar-nav">
-    <ul>
-      <li class="nav-item"><a href="#home" class="nav-link active" data-section="home"><svg class="nav-icon" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Home</a></li>
-      <li class="nav-item"><a href="#about" class="nav-link" data-section="about"><svg class="nav-icon" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>About</a></li>
-      <li class="nav-item"><a href="#resume" class="nav-link" data-section="resume"><svg class="nav-icon" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>Resume</a></li>
-      <li class="nav-item"><a href="#skills" class="nav-link" data-section="skills"><svg class="nav-icon" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Skills</a></li>
-      <li class="nav-item"><a href="#portfolio" class="nav-link" data-section="portfolio"><svg class="nav-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>Portfolio</a></li>
-      <li class="nav-item"><a href="#testimonials" class="nav-link" data-section="testimonials"><svg class="nav-icon" viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>Testimonials</a></li>
-      <li class="nav-item"><a href="#contact" class="nav-link" data-section="contact"><svg class="nav-icon" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Contact</a></li>
-    </ul>
+<!-- Navigation Shell -->
+<header class="fixed top-0 w-full z-50 bg-obsidian/80 backdrop-blur-xl border-b border-slate/20 flex justify-between items-center px-margin-page h-20">
+  <div class="font-headline-lg text-headline-lg tracking-tighter text-on-surface">JOHN LAMIGO</div>
+  <nav class="hidden md:flex gap-gutter-grid items-center">
+    <a class="font-label-caps text-label-caps text-primary border-b border-primary pb-1 cursor-none" href="#work">Work</a>
+    <a class="font-label-caps text-label-caps text-on-secondary-container hover:text-primary transition-colors duration-500 cursor-none" href="#about">About</a>
+    <a class="font-label-caps text-label-caps text-on-secondary-container hover:text-primary transition-colors duration-500 cursor-none" href="#stack">Stack</a>
+    <a class="font-label-caps text-label-caps text-on-secondary-container hover:text-primary transition-colors duration-500 cursor-none" href="#contact">Contact</a>
   </nav>
+  <div class="flex items-center gap-6">
+    <a href="john-lamigo-cv.pdf" download aria-label="Download CV" class="material-symbols-outlined text-primary cursor-none" style="font-variation-settings: 'FILL' 0;">terminal</a>
+    <a href="#contact" class="font-label-caps text-label-caps border border-emerald-deep px-6 py-2 hover:bg-emerald-deep/10 transition-all duration-300 cursor-none">Connect</a>
+  </div>
+</header>
 
-  <div class="sidebar-contact">
-    <div class="contact-row">
-      <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-      <a href="mailto:johnmichaellamigo@gmail.com">johnmichaellamigo@gmail.com</a>
+<main class="relative">
+
+<!-- Hero Section -->
+<section id="home" class="min-h-screen relative flex items-center px-margin-page overflow-hidden pt-20">
+  <div class="absolute inset-0 w-full h-full opacity-40">
+    <canvas id="shader-canvas-hero" style="display:block;width:100%;height:100%"></canvas>
+  </div>
+  <div class="relative z-10 w-full">
+    <div class="flex items-center gap-2 mb-8 opacity-0 translate-y-4 animate-[fadeInUp_1s_ease_forwards_0.2s]">
+      <div class="w-2 h-2 rounded-full bg-emerald-deep animate-pulse"></div>
+      <span class="font-code-sm text-code-sm text-tertiary tracking-widest uppercase">Available for new projects</span>
     </div>
-    <div class="contact-row">
-      <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-      Philippines · Worldwide
+    <h1 class="font-headline-xl text-headline-xl-mobile md:text-headline-xl max-w-4xl leading-none">
+      <span class="block">ENGINEER.</span>
+      <span class="block ml-12 md:ml-24 text-outline">STRATEGIST.</span>
+      <span class="block ml-6 md:ml-12">FOUNDER.</span>
+    </h1>
+    <div class="mt-16 flex flex-col md:flex-row justify-between items-start md:items-end gap-12">
+      <div class="max-w-md">
+        <p class="font-body-lg text-body-lg text-on-secondary-container">
+          Results-driven WordPress developer with 7+ years of experience building high-performing websites, conversion-focused funnels, and automated digital systems. Founder of DigiSyn.co.
+        </p>
+        <div class="mt-8 flex gap-4 flex-wrap">
+          <span class="px-3 py-1 border border-slate font-code-sm text-code-sm text-outline">WordPress</span>
+          <span class="px-3 py-1 border border-slate font-code-sm text-code-sm text-outline">GoHighLevel</span>
+          <span class="px-3 py-1 border border-slate font-code-sm text-code-sm text-outline">Elementor</span>
+        </div>
+      </div>
+      <a href="#work" class="flex items-center gap-4 group cursor-none">
+        <span class="font-label-caps text-label-caps text-primary group-hover:mr-2 transition-all">Discover the Work</span>
+        <span class="material-symbols-outlined text-primary">arrow_downward</span>
+      </a>
     </div>
-    <div class="contact-row">
-      <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 7.09A16 16 0 0016.09 16.27l.45-.45a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122.92 16.91v0z"/></svg>
-      +63 969 307 3146
+    <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8 border-t border-slate/40 pt-8 max-w-3xl">
+      <div><div class="font-headline-lg text-headline-lg text-on-surface">7<span class="text-tertiary">+</span></div><div class="font-code-sm text-code-sm text-outline uppercase tracking-wider mt-1">Years Experience</div></div>
+      <div><div class="font-headline-lg text-headline-lg text-on-surface">200<span class="text-tertiary">+</span></div><div class="font-code-sm text-code-sm text-outline uppercase tracking-wider mt-1">Websites Built</div></div>
+      <div><div class="font-headline-lg text-headline-lg text-on-surface">30<span class="text-tertiary">%</span></div><div class="font-code-sm text-code-sm text-outline uppercase tracking-wider mt-1">Avg Conversion Lift</div></div>
+      <div><div class="font-headline-lg text-headline-lg text-on-surface">500<span class="text-tertiary">+</span></div><div class="font-code-sm text-code-sm text-outline uppercase tracking-wider mt-1">Sites Managed</div></div>
     </div>
   </div>
+</section>
 
-  <div class="sidebar-socials">
-    <a href="https://linkedin.com" class="social-btn" target="_blank" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
-    <a href="https://github.com/digisyn-co" class="social-btn" target="_blank" aria-label="GitHub"><svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg></a>
-    <a href="https://digisyn.co" class="social-btn" target="_blank" aria-label="DigiSyn"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></a>
+<!-- The Premium Void / Section Divider -->
+<div class="h-void-lg bg-obsidian"></div>
+
+<!-- Portfolio Bento Grid -->
+<section id="work" class="px-margin-page py-section-gap relative">
+  <div class="flex flex-col md:flex-row justify-between items-baseline mb-20">
+    <h2 class="font-headline-lg text-headline-lg text-on-surface">Selected Works</h2>
+    <span class="font-code-sm text-code-sm text-outline tracking-tighter">[ 01 — 04 ]</span>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-12 gap-gutter-grid">
+    <!-- 01 -->
+    <a href="https://inthevue.com" target="_blank" rel="noopener" class="md:col-span-8 group rolex-hover bg-ink chamfer-border bento-card g-bento-1 aspect-video relative overflow-hidden block">
+      <div class="absolute inset-0 p-8 flex flex-col justify-between z-20">
+        <div class="flex justify-between items-start">
+          <span class="font-code-sm text-code-sm text-tertiary">01 / Media</span>
+          <span class="material-symbols-outlined text-on-surface opacity-0 group-hover:opacity-100 transition-all duration-500">north_east</span>
+        </div>
+        <div>
+          <h3 class="font-headline-lg text-headline-lg mb-2">In the Vue</h3>
+          <p class="font-body-md text-body-md text-on-secondary-container max-w-md">WordPress site for a media and entertainment brand — custom theme, video integration, and editorial layout.</p>
+        </div>
+      </div>
+    </a>
+    <!-- 02 -->
+    <a href="https://occuhealthsurgery.com" target="_blank" rel="noopener" class="md:col-span-4 group rolex-hover bg-ink chamfer-border bento-card g-bento-2 min-h-[400px] relative overflow-hidden block">
+      <div class="absolute inset-0 p-8 flex flex-col justify-between z-20">
+        <span class="font-code-sm text-code-sm text-tertiary">02 / Healthcare</span>
+        <div>
+          <h3 class="font-label-caps text-label-caps text-primary mb-4">Occu Health Surgery</h3>
+          <p class="font-body-md text-body-md text-on-secondary-container">Appointment booking, service pages, and HIPAA-conscious design.</p>
+        </div>
+      </div>
+    </a>
+    <!-- 03 -->
+    <div class="md:col-span-5 group rolex-hover bg-ink chamfer-border bento-card min-h-[500px] relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-br from-emerald-deep/20 to-transparent"></div>
+      <div class="absolute inset-0 p-8 flex flex-col justify-end z-20">
+        <span class="font-code-sm text-code-sm text-tertiary mb-4">03 / Legal</span>
+        <h3 class="font-headline-lg text-headline-lg leading-tight mb-4">Evergreen Legal</h3>
+        <p class="font-body-md text-body-md text-on-secondary-container">Canadian law firm site with practice area pages, attorney profiles, and consultation booking.</p>
+        <a href="https://evergreenlegal.ca" target="_blank" rel="noopener" class="mt-8 self-start border border-slate px-4 py-2 font-label-caps text-label-caps group-hover:border-primary transition-colors">Visit Site</a>
+      </div>
+    </div>
+    <!-- 04 -->
+    <a href="https://gametimeflorida.com" target="_blank" rel="noopener" class="md:col-span-7 group rolex-hover bg-ink chamfer-border bento-card g-bento-4 aspect-[16/9] relative overflow-hidden block">
+      <div class="absolute inset-0 p-8 flex flex-col justify-between z-20">
+        <div class="flex justify-between">
+          <span class="font-code-sm text-code-sm text-tertiary">04 / Entertainment</span>
+          <div class="flex gap-2">
+            <span class="material-symbols-outlined text-primary text-[18px]">verified</span>
+            <span class="material-symbols-outlined text-primary text-[18px]">cloud_done</span>
+          </div>
+        </div>
+        <div>
+          <h3 class="font-headline-lg text-headline-lg mb-2">Gametime Florida</h3>
+          <p class="font-body-md text-body-md text-on-secondary-container max-w-lg">Booking system, venue showcase, and social media integration for a Florida entertainment brand.</p>
+        </div>
+      </div>
+    </a>
   </div>
 
-  <a href="john-lamigo-cv.pdf" download class="sidebar-hire">Download CV</a>
-  <a href="#contact" class="sidebar-hire" style="background:transparent;border:1px solid var(--emerald-bright);color:var(--emerald-bright)">Hire John →</a>
-</aside>
+  <!-- More Work -->
+  <div class="mt-24">
+    <div class="flex justify-between items-baseline mb-10">
+      <h3 class="font-label-caps text-label-caps text-outline tracking-widest uppercase">More Work</h3>
+      <span class="font-code-sm text-code-sm text-outline">[ 05 — 11 ]</span>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter-grid">
+      <a href="https://avilaeducacion.com" target="_blank" rel="noopener" class="group rolex-hover bg-ink chamfer-border bento-card g-work aspect-video relative overflow-hidden block p-6 flex flex-col justify-end">
+        <span class="font-code-sm text-code-sm text-tertiary mb-2">Education · 2024</span>
+        <h4 class="font-label-caps text-label-caps text-primary">Avila Educación</h4>
+      </a>
+      <a href="https://texmg.com" target="_blank" rel="noopener" class="group rolex-hover bg-ink chamfer-border bento-card g-work aspect-video relative overflow-hidden block p-6 flex flex-col justify-end">
+        <span class="font-code-sm text-code-sm text-tertiary mb-2">B2B Services · 2023</span>
+        <h4 class="font-label-caps text-label-caps text-primary">TexMG</h4>
+      </a>
+      <a href="https://letitflowexteriors.ca" target="_blank" rel="noopener" class="group rolex-hover bg-ink chamfer-border bento-card g-work aspect-video relative overflow-hidden block p-6 flex flex-col justify-end">
+        <span class="font-code-sm text-code-sm text-tertiary mb-2">Trades · 2023</span>
+        <h4 class="font-label-caps text-label-caps text-primary">Let It Flow Exteriors</h4>
+      </a>
+      <a href="https://tritontow.com" target="_blank" rel="noopener" class="group rolex-hover bg-ink chamfer-border bento-card g-work aspect-video relative overflow-hidden block p-6 flex flex-col justify-end">
+        <span class="font-code-sm text-code-sm text-tertiary mb-2">Trades · 2023</span>
+        <h4 class="font-label-caps text-label-caps text-primary">Triton Tow</h4>
+      </a>
+      <a href="https://stproperties.com" target="_blank" rel="noopener" class="group rolex-hover bg-ink chamfer-border bento-card g-work aspect-video relative overflow-hidden block p-6 flex flex-col justify-end">
+        <span class="font-code-sm text-code-sm text-tertiary mb-2">Real Estate · 2025</span>
+        <h4 class="font-label-caps text-label-caps text-primary">ST Properties</h4>
+      </a>
+      <a href="https://tatrasindustrial.com" target="_blank" rel="noopener" class="group rolex-hover bg-ink chamfer-border bento-card g-work aspect-video relative overflow-hidden block p-6 flex flex-col justify-end">
+        <span class="font-code-sm text-code-sm text-tertiary mb-2">Industrial · 2025</span>
+        <h4 class="font-label-caps text-label-caps text-primary">Tatras Industrial</h4>
+      </a>
+      <a href="https://tuckhs.com" target="_blank" rel="noopener" class="group rolex-hover bg-ink chamfer-border bento-card g-work aspect-video relative overflow-hidden block p-6 flex flex-col justify-end">
+        <span class="font-code-sm text-code-sm text-tertiary mb-2">Services · 2025</span>
+        <h4 class="font-label-caps text-label-caps text-primary">Tuck HS</h4>
+      </a>
+    </div>
+  </div>
+</section>
 
-<!-- ══════════════ MAIN ══════════════ -->
-<main class="main">
-
-  <!-- ── HOME ── -->
-  <section id="home" class="section">
-    <canvas id="shader-canvas"></canvas>
-    <div class="hero-inner">
-      <div class="hero-tag reveal">
-        <span class="hero-tag-line"></span>
-        WordPress Engineer &amp; Digital Strategist
-      </div>
-      <h1 class="hero-h1 reveal delay-1">
-        ENGINEER.<br>
-        <em>STRATEGIST.</em><br>
-        FOUNDER.
-      </h1>
-      <p class="hero-desc reveal delay-2">Results-driven WordPress developer with 7+ years of experience building high-performing websites, conversion-focused funnels, and automated digital systems. Founder of DigiSyn.co.</p>
-      <div class="hero-actions reveal delay-3">
-        <a href="#portfolio" class="btn-primary">View My Work<svg class="btn-icon" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-        <a href="john-lamigo-cv.pdf" download class="btn-secondary">Download CV<svg class="btn-icon" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
-      </div>
-      <div class="hero-stats reveal delay-4">
-        <div class="hero-stat"><div class="stat-num">7<span>+</span></div><div class="stat-label">Years Experience</div></div>
-        <div class="hero-stat"><div class="stat-num">200<span>+</span></div><div class="stat-label">Websites Built</div></div>
-        <div class="hero-stat"><div class="stat-num">30<span>%</span></div><div class="stat-label">Avg Conversion Lift</div></div>
-        <div class="hero-stat"><div class="stat-num">500<span>+</span></div><div class="stat-label">Websites Managed</div></div>
+<!-- About / Resume -->
+<section id="about" class="bg-ink py-section-gap px-margin-page relative">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-20">
+    <div>
+      <span class="font-code-sm text-code-sm text-tertiary tracking-widest uppercase">About</span>
+      <h2 class="font-headline-lg text-headline-lg mt-4 mb-8">Wordpress Engineer &amp; Digital Strategist</h2>
+      <p class="font-body-lg text-body-lg text-on-secondary-container mb-6">I'm John Michael Lamigo — a results-driven WordPress Developer and Digital Strategist with 7+ years of experience building high-performing websites, conversion-focused funnels, and automated digital systems.</p>
+      <p class="font-body-md text-body-md text-on-secondary-container mb-6">As the Founder of <span class="text-tertiary">DigiSyn.co</span>, I have a proven track record of boosting conversion rates by up to 30%, reducing support turnaround time by 30%, and improving client retention by 20%.</p>
+      <div class="grid grid-cols-2 gap-px bg-slate/40 border border-slate/40 mt-10">
+        <div class="bg-obsidian p-4"><div class="font-code-sm text-code-sm text-outline uppercase mb-1">Location</div><div class="font-body-md text-body-md">Oton, Iloilo, PH</div></div>
+        <div class="bg-obsidian p-4"><div class="font-code-sm text-code-sm text-outline uppercase mb-1">Email</div><div class="font-body-md text-body-md"><a class="hover:text-tertiary" href="mailto:johnmichaellamigo@gmail.com">johnmichaellamigo@gmail.com</a></div></div>
+        <div class="bg-obsidian p-4"><div class="font-code-sm text-code-sm text-outline uppercase mb-1">Education</div><div class="font-body-md text-body-md">BS Information Technology</div></div>
+        <div class="bg-obsidian p-4"><div class="font-code-sm text-code-sm text-outline uppercase mb-1">Status</div><div class="font-body-md text-body-md text-tertiary">Open to Projects</div></div>
       </div>
     </div>
-  </section>
-
-  <!-- ── ABOUT ── -->
-  <section id="about" class="section">
-    <div class="section-header reveal">
-      <div class="eyebrow">About Me</div>
-      <h2 class="section-title">Wordpress Engineer &amp; <em>Digital Strategist</em></h2>
-    </div>
-    <div class="about-grid">
-      <div class="about-photo-col reveal-left">
-        <div class="about-photo-frame chamfer">
-          <img src="john.jpg" alt="John Michael Lamigo">
+    <div>
+      <span class="font-code-sm text-code-sm text-tertiary tracking-widest uppercase">Experience</span>
+      <div class="mt-8 space-y-8">
+        <div class="border-l border-slate/40 pl-6 relative"><div class="absolute -left-[3px] top-1 w-1.5 h-1.5 bg-emerald-deep"></div>
+          <div class="font-code-sm text-code-sm text-outline uppercase">Apr 2025 – Present</div>
+          <div class="font-headline-lg text-[20px] mt-1">Founder &amp; Strategic Adviser · DigiSyn.co</div>
+          <p class="font-body-md text-body-md text-on-secondary-container mt-2">Founded a digital solutions agency providing WordPress, funnel, and automation services. Built systems contributing to 25% growth in new clients.</p>
         </div>
-        <div class="about-badge">
-          <span class="about-badge-num">200+</span>
-          <span class="about-badge-label">Websites<br>Delivered</span>
+        <div class="border-l border-slate/40 pl-6 relative"><div class="absolute -left-[3px] top-1 w-1.5 h-1.5 bg-emerald-deep"></div>
+          <div class="font-code-sm text-code-sm text-outline uppercase">Jul 2024 – Apr 2025</div>
+          <div class="font-headline-lg text-[20px] mt-1">WordPress Developer · Saltwater Digital</div>
+          <p class="font-body-md text-body-md text-on-secondary-container mt-2">Converted 10+ Figma designs into SEO-optimized WordPress sites with sub-2s load times.</p>
         </div>
-      </div>
-      <div class="about-text reveal-right">
-        <p>I'm John Michael Lamigo — a results-driven WordPress Developer and Digital Strategist with 7+ years of experience building high-performing websites, conversion-focused funnels, and automated digital systems.</p>
-        <p>As the Founder of <strong>DigiSyn.co</strong>, I have a proven track record of boosting conversion rates by up to 30%, reducing support turnaround time by 30%, and improving client retention by 20%.</p>
-        <p>I'm adept at QA testing, marketing automation, and CRM workflows, with expertise in ClickFunnels, Unbounce, GoHighLevel, and WordPress — delivering scalable solutions that drive measurable business growth.</p>
-        <div class="about-info-grid">
-          <div class="about-info-item"><span class="about-info-label">Full Name</span><span class="about-info-value">John Michael Lamigo</span></div>
-          <div class="about-info-item"><span class="about-info-label">Location</span><span class="about-info-value">Oton, Iloilo, Philippines</span></div>
-          <div class="about-info-item"><span class="about-info-label">Email</span><span class="about-info-value"><a href="mailto:johnmichaellamigo@gmail.com" style="color:var(--emerald-bright)">johnmichaellamigo@gmail.com</a></span></div>
-          <div class="about-info-item"><span class="about-info-label">Phone</span><span class="about-info-value">+63 969 307 3146</span></div>
-          <div class="about-info-item"><span class="about-info-label">Education</span><span class="about-info-value">BS Information Technology</span></div>
-          <div class="about-info-item"><span class="about-info-label">Availability</span><span class="about-info-value" style="color:var(--emerald-bright)">Open to Projects</span></div>
+        <div class="border-l border-slate/40 pl-6 relative"><div class="absolute -left-[3px] top-1 w-1.5 h-1.5 bg-emerald-deep"></div>
+          <div class="font-code-sm text-code-sm text-outline uppercase">May 2023 – Jun 2024</div>
+          <div class="font-headline-lg text-[20px] mt-1">Funnel Builder / Designer · GrowthLabz Co.</div>
+          <p class="font-body-md text-body-md text-on-secondary-container mt-2">Deployed 25+ high-converting funnels with 12–30% higher conversion rates on GoHighLevel.</p>
         </div>
-        <div style="display:flex;gap:12px;flex-wrap:wrap">
-          <a href="#contact" class="btn-primary">Hire John<svg class="btn-icon" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-          <a href="john-lamigo-cv.pdf" download class="btn-secondary">Download CV<svg class="btn-icon" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg></a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── RESUME ── -->
-  <section id="resume" class="section">
-    <div class="section-header reveal">
-      <div class="eyebrow">My Experience</div>
-      <h2 class="section-title">Work &amp; <em>Education</em></h2>
-    </div>
-    <div class="resume-grid">
-      <div class="reveal-left">
-        <div class="resume-col-title"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>Work Experience</div>
-        <div class="resume-item"><span class="resume-date">Apr 2025 – Present</span><div class="resume-role">Founder &amp; Strategic Adviser</div><div class="resume-company">DigiSyn.co</div><p class="resume-desc">Founded a digital solutions agency providing WordPress, funnel, and automation services. Built initial systems contributing to 25% growth in new clients. Designed onboarding workflows that reduced project kickoff time by 40%.</p></div>
-        <div class="resume-item"><span class="resume-date">Jul 2024 – Apr 2025</span><div class="resume-role">WordPress Developer</div><div class="resume-company">Saltwater Digital</div><p class="resume-desc">Converted 10+ Figma designs into SEO-optimized WordPress sites with sub-2s load times. Resolved 150+ monthly support tickets, cutting resolution time by 30%.</p></div>
-        <div class="resume-item"><span class="resume-date">May 2023 – Jun 2024</span><div class="resume-role">Funnel Builder / Designer</div><div class="resume-company">GrowthLabz Co.</div><p class="resume-desc">Deployed 25+ high-converting funnels with 12–30% higher conversion rates. Set up complete GoHighLevel system integrating CRM, pipelines, and automations.</p></div>
-        <div class="resume-item"><span class="resume-date">Nov 2020 – Jan 2023</span><div class="resume-role">WordPress Engineer</div><div class="resume-company">WP Buffs (Remote)</div><p class="resume-desc">Handled 150+ support tickets/month with 95% SLA compliance. Improved site performance by 22% across 50+ client websites. Enhanced client retention by 20%.</p></div>
-        <div class="resume-item" style="border-left:none;padding-bottom:0"><span class="resume-date">May 2017 – Nov 2020</span><div class="resume-role">WordPress Developer &amp; Web Support</div><div class="resume-company">The Akire LLC / Sweets Marketing Tech</div><p class="resume-desc">Delivered 15+ custom WordPress builds with 100% client satisfaction. Built ClickFunnels funnels for eCommerce clients, increasing online sales by 15–25%.</p></div>
-      </div>
-      <div class="reveal-right">
-        <div class="resume-col-title"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>Education &amp; Certifications</div>
-        <div class="resume-item"><span class="resume-date">2016</span><div class="resume-role">BS Information Technology</div><div class="resume-company">Central Philippine University</div><p class="resume-desc">Bachelor of Science in Information Technology, providing the technical foundation for web development, systems, and digital strategy.</p></div>
-        <div class="resume-item"><span class="resume-date">LinkedIn Learning</span><div class="resume-role">WordPress Essential Training</div><div class="resume-company">Certificate</div><p class="resume-desc">Comprehensive training covering WordPress development, themes, plugins, and best practices for production websites.</p></div>
-        <div class="resume-item"><span class="resume-date">LinkedIn Learning</span><div class="resume-role">Project Management Foundations</div><div class="resume-company">Certificate</div><p class="resume-desc">Core project management methodologies covering planning, execution, and delivery of digital projects on time and within scope.</p></div>
-        <div class="resume-item"><span class="resume-date">LinkedIn Learning</span><div class="resume-role">Customer Service Troubleshooting</div><div class="resume-company">Certificate</div><p class="resume-desc">Advanced techniques for client communication, issue resolution, and maintaining high satisfaction rates in support environments.</p></div>
-        <div class="resume-item" style="border-left:none;padding-bottom:0"><span class="resume-date">On-the-job</span><div class="resume-role">Funnel Marketing Fundamentals</div><div class="resume-company">Certificate</div><p class="resume-desc">Hands-on training in conversion funnel strategy, A/B testing, and performance optimization for digital marketing campaigns.</p></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── SKILLS ── -->
-  <section id="skills" class="section">
-    <div class="section-header reveal">
-      <div class="eyebrow">Expertise</div>
-      <h2 class="section-title">Skills &amp; <em>Proficiency</em></h2>
-      <p class="section-subtitle">A breakdown of my technical skills and tools across web development, marketing automation, and digital strategy.</p>
-    </div>
-    <div class="skills-grid" id="skillsGrid">
-      <div class="skill-item reveal delay-1"><div class="skill-header"><span class="skill-name">WordPress Development</span><span class="skill-pct">95%</span></div><div class="skill-track"><div class="skill-fill" data-pct="95"></div></div></div>
-      <div class="skill-item reveal delay-2"><div class="skill-header"><span class="skill-name">GoHighLevel (GHL)</span><span class="skill-pct">90%</span></div><div class="skill-track"><div class="skill-fill" data-pct="90"></div></div></div>
-      <div class="skill-item reveal delay-1"><div class="skill-header"><span class="skill-name">Funnel Building</span><span class="skill-pct">92%</span></div><div class="skill-track"><div class="skill-fill" data-pct="92"></div></div></div>
-      <div class="skill-item reveal delay-2"><div class="skill-header"><span class="skill-name">SEO &amp; Analytics</span><span class="skill-pct">85%</span></div><div class="skill-track"><div class="skill-fill" data-pct="85"></div></div></div>
-      <div class="skill-item reveal delay-3"><div class="skill-header"><span class="skill-name">HTML / CSS / JavaScript</span><span class="skill-pct">88%</span></div><div class="skill-track"><div class="skill-fill" data-pct="88"></div></div></div>
-      <div class="skill-item reveal delay-4"><div class="skill-header"><span class="skill-name">Figma to WordPress</span><span class="skill-pct">90%</span></div><div class="skill-track"><div class="skill-fill" data-pct="90"></div></div></div>
-      <div class="skill-item reveal delay-3"><div class="skill-header"><span class="skill-name">WooCommerce</span><span class="skill-pct">85%</span></div><div class="skill-track"><div class="skill-fill" data-pct="85"></div></div></div>
-      <div class="skill-item reveal delay-4"><div class="skill-header"><span class="skill-name">QA Testing &amp; CRO</span><span class="skill-pct">88%</span></div><div class="skill-track"><div class="skill-fill" data-pct="88"></div></div></div>
-    </div>
-    <div class="tools-section reveal">
-      <div class="tools-title">Tools &amp; Platforms</div>
-      <div class="tools-list">
-        <span class="tool-tag">Elementor Pro</span><span class="tool-tag">ACF Pro</span><span class="tool-tag">ClickFunnels</span><span class="tool-tag">Unbounce</span><span class="tool-tag">Zapier</span><span class="tool-tag">HubSpot</span><span class="tool-tag">Google Analytics</span><span class="tool-tag">Search Console</span><span class="tool-tag">Hotjar</span><span class="tool-tag">Screaming Frog</span><span class="tool-tag">GTmetrix</span><span class="tool-tag">Figma</span><span class="tool-tag">Canva</span><span class="tool-tag">Photoshop</span><span class="tool-tag">LinkedIn Sales Navigator</span><span class="tool-tag">Apollo</span><span class="tool-tag">Freshdesk</span><span class="tool-tag">HelpScout</span><span class="tool-tag">Git</span><span class="tool-tag">cPanel</span><span class="tool-tag">Yoast SEO</span><span class="tool-tag">Webflow</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── PORTFOLIO ── -->
-  <section id="portfolio" class="section">
-    <div class="section-header reveal">
-      <div class="eyebrow">My Work</div>
-      <h2 class="section-title">Recent <em>Projects</em></h2>
-      <p class="section-subtitle">A selection of WordPress sites, funnels, and digital experiences built for clients across healthcare, education, services, and media.</p>
-    </div>
-    <div class="portfolio-filters reveal">
-      <button class="filter-btn active" data-filter="all">All</button>
-      <button class="filter-btn" data-filter="healthcare">Healthcare</button>
-      <button class="filter-btn" data-filter="education">Education</button>
-      <button class="filter-btn" data-filter="services">B2B Services</button>
-      <button class="filter-btn" data-filter="trades">Trades</button>
-      <button class="filter-btn" data-filter="realestate">Real Estate</button>
-      <button class="filter-btn" data-filter="media">Media</button>
-    </div>
-
-    <div class="portfolio-bento">
-      <a href="https://inthevue.com" class="portfolio-item p-a reveal delay-1" target="_blank" rel="noopener" data-cat="media">
-        <div class="portfolio-thumb g1"><img src="/previews/inthevue.jpg" alt="inthevue website preview" loading="lazy" onerror="this.style.display='none'"></div>
-        <div class="portfolio-overlay"><div class="portfolio-arrow"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div><span class="portfolio-cat">Media · 2024</span><div class="portfolio-name">In the Vue</div><div class="portfolio-desc">WordPress site for a media and entertainment brand — custom theme, video integration, and editorial layout.</div></div>
-      </a>
-      <a href="https://occuhealthsurgery.com" class="portfolio-item p-b reveal delay-2" target="_blank" rel="noopener" data-cat="healthcare">
-        <div class="portfolio-thumb g2"><img src="/previews/occuhealth.jpg" alt="occuhealth website preview" loading="lazy" onerror="this.style.display='none'"></div>
-        <div class="portfolio-overlay"><div class="portfolio-arrow"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div><span class="portfolio-cat">Healthcare · 2024</span><div class="portfolio-name">Occu Health Surgery</div><div class="portfolio-desc">Professional healthcare website with appointment booking, service pages, and HIPAA-conscious design.</div></div>
-      </a>
-      <a href="https://evergreenlegal.ca" class="portfolio-item p-c reveal delay-3" target="_blank" rel="noopener" data-cat="services">
-        <div class="portfolio-thumb g9"><img src="/previews/evergreen.jpg" alt="evergreen website preview" loading="lazy" onerror="this.style.display='none'"></div>
-        <div class="portfolio-overlay"><div class="portfolio-arrow"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div><span class="portfolio-cat">Legal · 2025</span><div class="portfolio-name">Evergreen Legal</div><div class="portfolio-desc">Canadian law firm website with practice area pages, attorney profiles, and consultation booking.</div></div>
-      </a>
-      <a href="https://gametimeflorida.com" class="portfolio-item p-d reveal delay-1" target="_blank" rel="noopener" data-cat="services">
-        <div class="portfolio-thumb g11"><img src="/previews/gametime.jpg" alt="gametime website preview" loading="lazy" onerror="this.style.display='none'"></div>
-        <div class="portfolio-overlay"><div class="portfolio-arrow"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div><span class="portfolio-cat">Entertainment · 2025</span><div class="portfolio-name">Gametime Florida</div><div class="portfolio-desc">Florida entertainment and events website with booking system, venue showcase, and social media integration.</div></div>
-      </a>
-    </div>
-
-    <div class="portfolio-grid" style="margin-top:2px">
-      <a href="https://avilaeducacion.com" class="portfolio-item reveal delay-3" target="_blank" rel="noopener" data-cat="education">
-        <div class="portfolio-thumb g3"><img src="/previews/avila.jpg" alt="avila website preview" loading="lazy" onerror="this.style.display='none'"></div>
-        <div class="portfolio-overlay"><div class="portfolio-arrow"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div><span class="portfolio-cat">Education · 2024</span><div class="portfolio-name">Avila Educación</div><div class="portfolio-desc">Spanish-language education platform with course listings, enrollment flows, and multilingual content management.</div></div>
-      </a>
-      <a href="https://texmg.com" class="portfolio-item reveal delay-1" target="_blank" rel="noopener" data-cat="services">
-        <div class="portfolio-thumb g4"><img src="/previews/texmg.jpg" alt="texmg website preview" loading="lazy" onerror="this.style.display='none'"></div>
-        <div class="portfolio-overlay"><div class="portfolio-arrow"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div><span class="portfolio-cat">B2B Services · 2023</span><div class="portfolio-name">TexMG</div><div class="portfolio-desc">B2B services website with lead generation focus, case studies, and conversion-optimized service pages.</div></div>
-      </a>
-      <a href="https://letitflowexteriors.ca" class="portfolio-item reveal delay-2" target="_blank" rel="noopener" data-cat="trades">
-        <div class="portfolio-thumb g5"><img src="/previews/letitflow.jpg" alt="letitflow website preview" loading="lazy" onerror="this.style.display='none'"></div>
-        <div class="portfolio-overlay"><div class="portfolio-arrow"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div><span class="portfolio-cat">Trades · 2023</span><div class="portfolio-name">Let It Flow Exteriors</div><div class="portfolio-desc">Local trades website for a Canadian exterior services company — SEO-optimized, mobile-first, quote form integration.</div></div>
-      </a>
-      <a href="https://tritontow.com" class="portfolio-item reveal delay-3" target="_blank" rel="noopener" data-cat="trades">
-        <div class="portfolio-thumb g6"><img src="/previews/tritontow.jpg" alt="tritontow website preview" loading="lazy" onerror="this.style.display='none'"></div>
-        <div class="portfolio-overlay"><div class="portfolio-arrow"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div><span class="portfolio-cat">Trades · 2023</span><div class="portfolio-name">Triton Tow</div><div class="portfolio-desc">Towing and roadside assistance website with click-to-call, service area maps, and 24/7 emergency booking.</div></div>
-      </a>
-      <a href="https://stproperties.com" class="portfolio-item reveal delay-1" target="_blank" rel="noopener" data-cat="realestate">
-        <div class="portfolio-thumb g7"><img src="/previews/stproperties.jpg" alt="stproperties website preview" loading="lazy" onerror="this.style.display='none'"></div>
-        <div class="portfolio-overlay"><div class="portfolio-arrow"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div><span class="portfolio-cat">Real Estate · 2025</span><div class="portfolio-name">ST Properties</div><div class="portfolio-desc">Real estate website with property listings, agent profiles, and lead capture system built on WordPress.</div></div>
-      </a>
-      <a href="https://tatrasindustrial.com" class="portfolio-item reveal delay-2" target="_blank" rel="noopener" data-cat="services">
-        <div class="portfolio-thumb g8"><img src="/previews/tatras.jpg" alt="tatras website preview" loading="lazy" onerror="this.style.display='none'"></div>
-        <div class="portfolio-overlay"><div class="portfolio-arrow"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div><span class="portfolio-cat">Industrial · 2025</span><div class="portfolio-name">Tatras Industrial</div><div class="portfolio-desc">Industrial services website with product catalog, technical documentation, and B2B inquiry system.</div></div>
-      </a>
-      <a href="https://tuckhs.com" class="portfolio-item reveal delay-1" target="_blank" rel="noopener" data-cat="services">
-        <div class="portfolio-thumb g10"><img src="/previews/tuckhs.jpg" alt="tuckhs website preview" loading="lazy" onerror="this.style.display='none'"></div>
-        <div class="portfolio-overlay"><div class="portfolio-arrow"><svg viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div><span class="portfolio-cat">Services · 2025</span><div class="portfolio-name">Tuck HS</div><div class="portfolio-desc">Service business website with modern design, clear value proposition, and optimized conversion flow.</div></div>
-      </a>
-    </div>
-  </section>
-
-  <!-- ── TESTIMONIALS ── -->
-  <section id="testimonials" class="section">
-    <div class="section-header reveal">
-      <div class="eyebrow">Client Reviews</div>
-      <h2 class="section-title">What Clients <em>Say</em></h2>
-    </div>
-    <div class="testi-grid">
-      <div class="testi-card reveal delay-1">
-        <div class="testi-quote-mark">"</div>
-        <div class="testi-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-        <p class="testi-text">John is the rare developer who actually sweats the details I care about. Pages load fast, the CMS makes sense, and the work ships on time, every time.</p>
-        <div class="testi-author"><div class="testi-avatar">SJ</div><div><div class="testi-name">Stephen Johnson</div><div class="testi-role">Salt Water Digital</div></div></div>
-      </div>
-      <div class="testi-card reveal delay-2">
-        <div class="testi-quote-mark">"</div>
-        <div class="testi-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-        <p class="testi-text">Clean code, great instincts on layout, and he asks the right questions before he opens an editor. Highly recommended for any web project.</p>
-        <div class="testi-author"><div class="testi-avatar" style="background:#7C3AED">WW</div><div><div class="testi-name">Will Wang</div><div class="testi-role">Growthlabz</div></div></div>
-      </div>
-      <div class="testi-card reveal delay-3">
-        <div class="testi-quote-mark">"</div>
-        <div class="testi-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-        <p class="testi-text">Sharp, fast, and easy to brief. The kind of contractor you keep on a shortlist for any web project that absolutely needs to be done right the first time.</p>
-        <div class="testi-author"><div class="testi-avatar" style="background:#DC2626">AW</div><div><div class="testi-name">Alec Wines</div><div class="testi-role">Dave Ramsey Solutions</div></div></div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ── CONTACT ── -->
-  <section id="contact" class="section">
-    <div class="section-header reveal">
-      <div class="eyebrow">Get In Touch</div>
-      <h2 class="section-title">Let's Work <em>Together</em></h2>
-    </div>
-    <div class="contact-grid">
-      <div class="reveal-left">
-        <p class="contact-intro">Ready to build something that grows your business? Tell me about your project and I'll get back to you within one working day with next steps and a fair quote.</p>
-        <div class="contact-items">
-          <div class="contact-item"><div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><span class="contact-label">Email</span><div class="contact-value"><a href="mailto:johnmichaellamigo@gmail.com">johnmichaellamigo@gmail.com</a></div></div></div>
-          <div class="contact-item"><div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.22 1.18 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 009.18 9.18l.45-.45a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div><div><span class="contact-label">Phone</span><div class="contact-value"><a href="tel:+639693073146">+63 969 307 3146</a></div></div></div>
-          <div class="contact-item"><div class="contact-icon"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg></div><div><span class="contact-label">Location</span><div class="contact-value">Oton, Iloilo, Philippines · Remote Worldwide</div></div></div>
-          <div class="contact-item"><div class="contact-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div><div><span class="contact-label">Website</span><div class="contact-value"><a href="https://digisyn.co" target="_blank">digisyn.co</a></div></div></div>
-        </div>
-      </div>
-      <div class="reveal-right">
-        <div class="contact-form">
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLSfmWoxevchlokQC974iraMJTs75_t5tigEXyxmvdJewwcxNRw/viewform?usp=publish-editor" target="_blank" rel="noopener" style="display:block;margin-bottom:20px">
-            <button type="button" class="form-submit">Start a Project via Form →</button>
-          </a>
-          <p style="text-align:center;font-size:.8rem;color:var(--on-surface-faint);margin:0;font-family:var(--font-mono)">
-            Or email directly: <a href="mailto:johnmichaellamigo@gmail.com" style="color:var(--emerald-bright)">johnmichaellamigo@gmail.com</a>
-          </p>
+        <div class="border-l border-slate/40 pl-6 relative"><div class="absolute -left-[3px] top-1 w-1.5 h-1.5 bg-emerald-deep"></div>
+          <div class="font-code-sm text-code-sm text-outline uppercase">Nov 2020 – Jan 2023</div>
+          <div class="font-headline-lg text-[20px] mt-1">WordPress Engineer · WP Buffs</div>
+          <p class="font-body-md text-body-md text-on-secondary-container mt-2">Handled 150+ support tickets/month at 95% SLA compliance across 50+ client websites.</p>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer class="site-footer">
-    <span>© <span id="year"></span> John Michael Lamigo · All Rights Reserved</span>
-    <div class="footer-right">
-      <a href="https://digisyn.co" target="_blank">DigiSyn.co</a>
-      <a href="john-lamigo-cv.pdf" download>Download CV</a>
-      <a href="#contact">Hire John</a>
+<!-- Technical Stack Section -->
+<section id="stack" class="py-section-gap px-margin-page relative">
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-20">
+    <div>
+      <h2 class="font-headline-lg text-headline-lg mb-8">The Technical Armory</h2>
+      <p class="font-body-lg text-body-lg text-on-secondary-container mb-12">Building websites that endure requires more than just code. It requires a philosophy of modularity, performance, and aesthetic intent.</p>
+      <div class="space-y-6">
+        <div class="border-b border-slate/40 pb-4 flex justify-between items-center group cursor-none">
+          <span class="font-label-caps text-label-caps text-on-surface group-hover:text-primary transition-colors">WordPress Development</span>
+          <span class="font-code-sm text-code-sm text-outline">Elementor, ACF Pro, WooCommerce</span>
+        </div>
+        <div class="border-b border-slate/40 pb-4 flex justify-between items-center group cursor-none">
+          <span class="font-label-caps text-label-caps text-on-surface group-hover:text-primary transition-colors">Marketing Automation</span>
+          <span class="font-code-sm text-code-sm text-outline">GoHighLevel, ClickFunnels, Zapier</span>
+        </div>
+        <div class="border-b border-slate/40 pb-4 flex justify-between items-center group cursor-none">
+          <span class="font-label-caps text-label-caps text-on-surface group-hover:text-primary transition-colors">SEO &amp; Analytics</span>
+          <span class="font-code-sm text-code-sm text-outline">Search Console, GTmetrix, Screaming Frog</span>
+        </div>
+      </div>
     </div>
-  </footer>
+    <div class="relative min-h-[500px] bg-ink border border-slate/20 p-8 flex items-center justify-center">
+      <div class="absolute inset-0 opacity-10" style="background-image: radial-gradient(circle, #c9c6c5 1px, transparent 1px); background-size: 20px 20px;"></div>
+      <div class="relative z-10 text-center">
+        <div class="font-headline-xl text-headline-xl text-outline mb-4">BUILD</div>
+        <div class="font-code-sm text-code-sm text-primary tracking-[0.5em] uppercase">Systematic Thinking</div>
+      </div>
+      <div class="absolute bottom-8 right-8 flex items-center gap-3">
+        <div class="w-3 h-3 rounded-full bg-emerald-deep animate-ping"></div>
+        <span class="font-code-sm text-code-sm text-tertiary">AVAILABLE_FOR_HIRE</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="bg-ink py-section-gap px-margin-page relative">
+  <div class="flex justify-between items-baseline mb-20">
+    <h2 class="font-headline-lg text-headline-lg text-on-surface">What Clients Say</h2>
+    <span class="font-code-sm text-code-sm text-outline tracking-tighter">[ 01 — 03 ]</span>
+  </div>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter-grid">
+    <div class="chamfer-border bg-obsidian p-8">
+      <div class="font-headline-xl text-headline-xl text-emerald-deep opacity-60 leading-none mb-4">"</div>
+      <p class="font-body-md text-body-md text-on-secondary-container mb-8">John is the rare developer who actually sweats the details I care about. Pages load fast, the CMS makes sense, and the work ships on time, every time.</p>
+      <div class="font-label-caps text-label-caps text-on-surface">Stephen Johnson</div>
+      <div class="font-code-sm text-code-sm text-outline">Salt Water Digital</div>
+    </div>
+    <div class="chamfer-border bg-obsidian p-8">
+      <div class="font-headline-xl text-headline-xl text-emerald-deep opacity-60 leading-none mb-4">"</div>
+      <p class="font-body-md text-body-md text-on-secondary-container mb-8">Clean code, great instincts on layout, and he asks the right questions before he opens an editor. Highly recommended.</p>
+      <div class="font-label-caps text-label-caps text-on-surface">Will Wang</div>
+      <div class="font-code-sm text-code-sm text-outline">Growthlabz</div>
+    </div>
+    <div class="chamfer-border bg-obsidian p-8">
+      <div class="font-headline-xl text-headline-xl text-emerald-deep opacity-60 leading-none mb-4">"</div>
+      <p class="font-body-md text-body-md text-on-secondary-container mb-8">Sharp, fast, and easy to brief. The kind of contractor you keep on a shortlist for any project that absolutely needs to be done right.</p>
+      <div class="font-label-caps text-label-caps text-on-surface">Alec Wines</div>
+      <div class="font-code-sm text-code-sm text-outline">Dave Ramsey Solutions</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Section -->
+<section id="contact" class="py-section-gap px-margin-page text-center">
+  <h2 class="font-label-caps text-label-caps text-outline tracking-[1em] uppercase mb-12">Initiate Collaboration</h2>
+  <a class="inline-block group cursor-none" href="mailto:johnmichaellamigo@gmail.com">
+    <span class="font-headline-xl text-headline-xl-mobile md:text-headline-xl hover:text-primary transition-colors duration-500">START_PROJECT.SH</span>
+    <div class="h-1 w-0 group-hover:w-full bg-primary transition-all duration-700 mx-auto mt-4"></div>
+  </a>
+  <div class="mt-12 flex flex-col items-center gap-4">
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSfmWoxevchlokQC974iraMJTs75_t5tigEXyxmvdJewwcxNRw/viewform?usp=publish-editor" target="_blank" rel="noopener" class="font-label-caps text-label-caps border border-emerald-deep px-8 py-3 hover:bg-emerald-deep/10 transition-all duration-300 cursor-none">Start a Project via Form</a>
+    <span class="font-code-sm text-code-sm text-outline">+63 969 307 3146 · Oton, Iloilo, Philippines · Remote Worldwide</span>
+  </div>
+</section>
 
 </main>
 
+<!-- Footer Shell -->
+<footer class="bg-obsidian border-t border-slate/10 px-margin-page py-void-sm w-full flex flex-col md:flex-row justify-between items-center gap-gutter-grid">
+  <div class="font-label-caps text-label-caps text-outline">©2026 JOHN LAMIGO. ALL SYSTEMS NOMINAL.</div>
+  <div class="flex gap-12 font-code-sm text-code-sm text-on-secondary-fixed-variant">
+    <a class="hover:text-on-surface transition-opacity cursor-none" href="https://github.com/digisyn-co" target="_blank" rel="noopener">Github</a>
+    <a class="hover:text-on-surface transition-opacity cursor-none" href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+    <a class="hover:text-on-surface transition-opacity cursor-none" href="https://digisyn.co" target="_blank" rel="noopener">DigiSyn.co</a>
+  </div>
+  <div class="font-label-caps text-label-caps text-on-secondary-fixed-variant">JOHNLAMIGO.DIGISYN.CO</div>
+</footer>
+
 <script>
-document.getElementById('year').textContent = new Date().getFullYear();
-
-const sidebar = document.getElementById('sidebar');
-const overlay = document.getElementById('sidebarOverlay');
-const toggle = document.getElementById('sidebarToggle');
-function openSidebar() { sidebar.classList.add('open'); overlay.classList.add('visible'); }
-function closeSidebar() { sidebar.classList.remove('open'); overlay.classList.remove('visible'); }
-toggle.addEventListener('click', () => sidebar.classList.contains('open') ? closeSidebar() : openSidebar());
-overlay.addEventListener('click', closeSidebar);
-
-const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('.nav-link');
-function updateActiveNav() {
-  let current = '';
-  sections.forEach(sec => { if (window.scrollY >= sec.offsetTop - 120) current = sec.id; });
-  navLinks.forEach(link => link.classList.toggle('active', link.dataset.section === current));
-}
-window.addEventListener('scroll', updateActiveNav, { passive: true });
-
-navLinks.forEach(link => {
-  link.addEventListener('click', e => {
-    e.preventDefault();
-    const target = document.querySelector('#' + link.dataset.section);
-    if (target) { target.scrollIntoView({ behavior: 'smooth', block: 'start' }); closeSidebar(); }
-  });
-});
-
-const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
-const revealObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('visible'); revealObserver.unobserve(entry.target); } });
-}, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-revealEls.forEach(el => revealObserver.observe(el));
-
-const skillFills = document.querySelectorAll('.skill-fill');
-const skillObserver = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const fill = entry.target; const pct = fill.dataset.pct;
-      setTimeout(() => { fill.style.width = pct + '%'; fill.closest('.skill-item').classList.add('animated'); }, 200);
-      skillObserver.unobserve(entry.target);
+(function() {
+  const canvas = document.getElementById('shader-canvas-hero');
+  function syncSize() {
+    const w = canvas.clientWidth || 1280, h = canvas.clientHeight || 720;
+    if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }
+  }
+  if (typeof ResizeObserver !== 'undefined') new ResizeObserver(syncSize).observe(canvas);
+  syncSize();
+  const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+  if (!gl) return;
+  const vs = `attribute vec2 a_position;
+varying vec2 v_texCoord;
+void main() { v_texCoord = a_position * 0.5 + 0.5; gl_Position = vec4(a_position, 0.0, 1.0); }`;
+  const fs = `precision highp float;
+uniform float u_time; uniform vec2 u_resolution; uniform vec2 u_mouse;
+varying vec2 v_texCoord;
+void main() {
+  vec2 uv = v_texCoord;
+  vec2 m = u_mouse / u_resolution;
+  float noise = 0.0; vec2 pos = uv * 3.0;
+  for(float i = 1.0; i < 4.0; i++) {
+    pos.x += 0.3 / i * sin(i * 3.0 * pos.y + u_time * 0.2 + m.x * 2.0);
+    pos.y += 0.3 / i * cos(i * 3.0 * pos.x + u_time * 0.2 + m.y * 2.0);
+    noise += 0.1 / i * abs(sin(pos.x + pos.y));
+  }
+  vec3 baseColor = vec3(0.02, 0.02, 0.03);
+  vec3 highlightColor = vec3(0.1, 0.1, 0.15);
+  vec3 color = mix(baseColor, highlightColor, noise);
+  float vignette = 1.0 - length(uv - 0.5) * 0.5;
+  color *= vignette;
+  gl_FragColor = vec4(color, 1.0);
+}`;
+  function cs(type, src) { const s = gl.createShader(type); gl.shaderSource(s, src); gl.compileShader(s); return s; }
+  const prog = gl.createProgram();
+  gl.attachShader(prog, cs(gl.VERTEX_SHADER, vs));
+  gl.attachShader(prog, cs(gl.FRAGMENT_SHADER, fs));
+  gl.linkProgram(prog); gl.useProgram(prog);
+  const buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+  const posLoc = gl.getAttribLocation(prog, 'a_position');
+  gl.enableVertexAttribArray(posLoc);
+  gl.vertexAttribPointer(posLoc, 2, gl.FLOAT, false, 0, 0);
+  const uTime = gl.getUniformLocation(prog, 'u_time');
+  const uRes = gl.getUniformLocation(prog, 'u_resolution');
+  const uMouse = gl.getUniformLocation(prog, 'u_mouse');
+  let mouse = { x: canvas.width / 2, y: canvas.height / 2 };
+  window.addEventListener('mousemove', (event) => {
+    const rect = canvas.getBoundingClientRect();
+    if (rect.width && rect.height) {
+      const nx = (event.clientX - rect.left) / rect.width;
+      const ny = 1.0 - (event.clientY - rect.top) / rect.height;
+      mouse.x = nx * canvas.width; mouse.y = ny * canvas.height;
     }
   });
-}, { threshold: 0.5 });
-skillFills.forEach(el => skillObserver.observe(el));
-
-const filterBtns = document.querySelectorAll('.filter-btn');
-const portfolioItems = document.querySelectorAll('.portfolio-item');
-filterBtns.forEach(btn => {
-  btn.addEventListener('click', () => {
-    filterBtns.forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    const filter = btn.dataset.filter;
-    portfolioItems.forEach(item => {
-      const show = filter === 'all' || item.dataset.cat === filter;
-      item.style.opacity = show ? '1' : '0';
-      item.style.transform = show ? '' : 'scale(0.95)';
-      item.style.pointerEvents = show ? '' : 'none';
-      item.style.transition = 'opacity 0.35s ease, transform 0.35s ease';
-    });
+  function render(t) {
+    if (typeof ResizeObserver === 'undefined') syncSize();
+    gl.viewport(0, 0, canvas.width, canvas.height);
+    if (uTime) gl.uniform1f(uTime, t * 0.001);
+    if (uRes) gl.uniform2f(uRes, canvas.width, canvas.height);
+    if (uMouse) gl.uniform2f(uMouse, mouse.x, mouse.y);
+    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+    requestAnimationFrame(render);
+  }
+  render(0);
+})();
+</script>
+<script>
+document.getElementById('year');
+const cursor = document.getElementById('cursor');
+let cursorX = 0, cursorY = 0, currentX = 0, currentY = 0;
+document.addEventListener('mousemove', (e) => { cursorX = e.clientX; cursorY = e.clientY; });
+function animateCursor() {
+  let dx = cursorX - currentX, dy = cursorY - currentY;
+  currentX += dx * 0.15; currentY += dy * 0.15;
+  cursor.style.transform = `translate(${currentX - 10}px, ${currentY - 10}px)`;
+  requestAnimationFrame(animateCursor);
+}
+if (!window.matchMedia('(pointer: coarse)').matches) animateCursor();
+const interactables = document.querySelectorAll('.cursor-none');
+interactables.forEach(el => {
+  el.addEventListener('mouseenter', () => {
+    cursor.style.width = '60px'; cursor.style.height = '60px';
+    cursor.style.borderColor = '#c9c6c5'; cursor.style.backgroundColor = 'rgba(201, 198, 197, 0.1)';
+  });
+  el.addEventListener('mouseleave', () => {
+    cursor.style.width = '20px'; cursor.style.height = '20px';
+    cursor.style.borderColor = 'rgba(255, 255, 255, 0.5)'; cursor.style.backgroundColor = 'transparent';
   });
 });
-
-setTimeout(() => { document.querySelectorAll('#home .reveal').forEach(el => el.classList.add('visible')); }, 100);
+window.addEventListener('scroll', () => {
+  document.querySelectorAll('section').forEach(section => {
+    const rect = section.getBoundingClientRect();
+    if (rect.top < window.innerHeight * 0.85) section.classList.add('opacity-100');
+  });
+});
+window.dispatchEvent(new Event('scroll'));
 </script>
-<script src="cursor.js?v=2" defer></script>
-<script src="shader.js?v=2" defer></script>
 <script src="chatbot.js" defer></script>
 </body>
 </html>
